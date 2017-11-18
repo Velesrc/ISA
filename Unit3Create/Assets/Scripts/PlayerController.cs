@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
 	[HideInInspector] public bool facindRight = true;
 	[HideInInspector] public bool jump = false;
-
+	[SerializeField] private int coints;
+	public Text mtext;
 	public float moveForce = 365f;
 	public float maxSpeed = 5f;
 	public float jumpForce = 300f;
@@ -15,19 +16,25 @@ public class PlayerController : MonoBehaviour {
 	private bool grounded = false;
 	private Animator anim;
 	private Rigidbody2D rb2d;
-
+	private float Timer;
 	void Awake(){
+		Timer = 30;
 		anim = gameObject.GetComponent<Animator> ();
 		rb2d = gameObject.GetComponent<Rigidbody2D> ();
 
 	}
 	// Use this for initialization
 	void Start () {
-		
+		mtext = GameObject.Find ("TextO").GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		Timer -= Time.deltaTime;
+		if (Timer <= 0 && coints < 10) {
+			mtext.text = "YOU LOSE!";
+			Time.timeScale = 0.0f;
+		}
 		grounded = Physics2D.Linecast (transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
 		if (Input.GetButtonDown ("Jump") && grounded) {
@@ -50,7 +57,7 @@ public class PlayerController : MonoBehaviour {
 			Flip ();
 		else if (h < 0 && facindRight)
 			Flip ();
-		if (jump == true) {
+		if (jump) {
 			anim.SetTrigger ("Jump");
 			rb2d.AddForce (new Vector2 (0f, jumpForce));
 			jump = false;
@@ -63,5 +70,10 @@ public class PlayerController : MonoBehaviour {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.tag == "coin")
+			coints++;
 	}
 }
