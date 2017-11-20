@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4617587164760074}
   - component: {fileID: 212264937445884324}
   - component: {fileID: 58309089225662996}
-  - component: {fileID: 114118699391816376}
+  - component: {fileID: 114868048894800864}
   m_Layer: 0
   m_Name: saw
   m_TagString: damage
@@ -57,7 +57,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.75
---- !u!114 &114118699391816376
+--- !u!114 &114868048894800864
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1912479499683874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0808bf2b1897c14096e1429e18a0a2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 868c4250e6c5bb24ebad9f2767de850d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212264937445884324
