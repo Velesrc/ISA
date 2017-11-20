@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fly
   - Enemy
   - ExplosionFX
   - Bullet
@@ -12,6 +11,8 @@ TagManager:
   - Obstacle
   - HealthBar
   - BombPickup
+  - coin
+  - damage
   layers:
   - Default
   - TransparentFX
@@ -46,6 +47,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Obs
+    uniqueID: 319422949
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
