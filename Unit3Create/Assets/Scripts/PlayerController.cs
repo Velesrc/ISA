@@ -13,17 +13,17 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 tmpPosition;
 	public float showY;
 	//PUBLIC
-	public float Timer = 30;
+	public float Timer = 60;
 	public int PlayerScore = 0;
 	public Transform groundCheck;
 	public bool jump = false;
-	public  float moveForce = 60;
-	public float maxSpeed = 5f;
+	public  float moveForce = 85;
+	public float maxSpeed = 10f;
 	public float jumpForce = 400f;
 	public bool grounded = false;
 	// Use this for initialization
 	void Awake () {
-		
+		tmpHor = 1;
 		sm = GameObject.Find ("SpawnManager").GetComponent<SpawnManager> ();
 		rb2d = GetComponent<Rigidbody2D> ();
 		SetText = GameObject.Find("Score").GetComponent<UnityEngine.UI.Text> ();
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour {
 			Time.timeScale = 0.0f;
 		}
 		Timer -= Time.deltaTime;
-		if (Timer <= 0 && PlayerScore < 10) {
+		if (Timer <= 0 && PlayerScore < 20) {
 			SetText.text = "You Lose :(";
 		}
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
@@ -48,12 +48,8 @@ public class PlayerController : MonoBehaviour {
 		}
 
 	void FixedUpdate(){
-		tmpHor = Input.GetAxis ("Horizontal");
 		
-		if (tmpHor > 0 && facingRight)
-			Flip ();
-		else if (tmpHor < 0 && !facingRight)
-			Flip ();
+
 
 		if (rb2d.velocity.x * tmpHor < maxSpeed)
 			rb2d.AddForce (Vector2.right * tmpHor * moveForce);
@@ -68,19 +64,13 @@ public class PlayerController : MonoBehaviour {
 				
 		}
 	}
-	void Flip(){
-		facingRight = !facingRight;
-		tmpPosition = transform.localScale;
-		tmpPosition.x *= -1;
-		gameObject.transform.localScale = tmpPosition;
-	}
 
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.tag == "coin") {
 			PlayerScore++;
 			SetText.text = "Score: " + PlayerScore.ToString ();
 
-			if (PlayerScore == 10) {
+			if (PlayerScore == 20) {
 				Time.timeScale = 0.0f;
 				SetText.text = "You WIN!!!!!";
 			}

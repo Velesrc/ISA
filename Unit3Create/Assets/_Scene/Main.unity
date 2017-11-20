@@ -221,12 +221,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lowestY: 0
   blockCount: 10
-  coin: {fileID: 1969788486260560, guid: f91945f14bcb4544b9970cc430d9cbd3, type: 2}
+  coin: {fileID: 1374819292697140, guid: f91945f14bcb4544b9970cc430d9cbd3, type: 2}
   block: {fileID: 1125119695044478, guid: b3a5ec86936c11a43bd36b16c6e1a8ac, type: 2}
   saw: {fileID: 1912479499683874, guid: e306adcc2fac2eb44abb1af785b4ddd5, type: 2}
   SawCount: 3
-  HorMin: 14
-  HorMax: 17
+  HorMin: 11
+  HorMax: 13
   VerMin: -3
   VerMax: 3
   origPos: {x: 0, y: 0}
@@ -527,6 +527,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 212370707312899660, guid: b3a5ec86936c11a43bd36b16c6e1a8ac,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.9191176
+      objectReference: {fileID: 0}
+    - target: {fileID: 212370707312899660, guid: b3a5ec86936c11a43bd36b16c6e1a8ac,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.13516438
+      objectReference: {fileID: 0}
+    - target: {fileID: 212370707312899660, guid: b3a5ec86936c11a43bd36b16c6e1a8ac,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.13516438
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b3a5ec86936c11a43bd36b16c6e1a8ac, type: 2}
   m_IsPrefabParent: 0
@@ -721,6 +736,11 @@ Prefab:
         type: 2}
       propertyPath: m_GravityScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61757536849229664, guid: 245615ac6ba79b74a989e0b2e4881c1a,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1.41
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114936293395750022, guid: 245615ac6ba79b74a989e0b2e4881c1a, type: 2}

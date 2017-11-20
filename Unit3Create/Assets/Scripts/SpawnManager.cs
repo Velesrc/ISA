@@ -8,10 +8,11 @@ public class SpawnManager : MonoBehaviour {
 	private GameObject MyPlat, MyCoin;
 	public float lowestY;
 	//Public
-	public int blockCount = 10;
+	public int blockCount = 40;
 	public GameObject coin;
 	public GameObject block;
 	public GameObject saw;
+
 	public int SawCount = 3;
 
 	public float HorMin = 10, HorMax = 14;
@@ -19,6 +20,7 @@ public class SpawnManager : MonoBehaviour {
 	// Use this for initialization
 	public Vector2 origPos; 
 	void Start () {
+		
 		lowestY = -30;
 		origPos = new Vector2 (0f, 0f);;
 		Spawn ();
@@ -32,9 +34,12 @@ public class SpawnManager : MonoBehaviour {
 	void Spawn(){
 		for (int i = 0; i < blockCount; i++) {
 			randomPosition = origPos + new Vector2 (Random.Range(HorMin, HorMax), Random.Range(VerMin, VerMax));
-
-			MonoBehaviour.Instantiate (coin, randomPosition + new Vector2(0f, 2), Quaternion.identity);
-			MonoBehaviour.Instantiate (saw, randomPosition + new Vector2(Random.Range(-3,3), 0f), Quaternion.identity);
+			if (Random.Range (0, 10) <= 5) {
+				MonoBehaviour.Instantiate (coin, randomPosition + new Vector2 (0f, 2), Quaternion.identity);
+			}
+			if (Random.Range (0, 10) <= 2) {
+				MonoBehaviour.Instantiate (saw, randomPosition + new Vector2 (Random.Range (-3, 3), 0f), Quaternion.identity);
+			}
 			//MyCoin.transform.parent = GameObject.Find ("Coins").transform;
 			MonoBehaviour.Instantiate (block, randomPosition, Quaternion.identity);
 			//MyPlat.transform.parent = GameObject.Find("Platforms").transform;
